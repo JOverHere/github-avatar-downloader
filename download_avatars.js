@@ -38,12 +38,15 @@ function downloadImageByURL(url, filepath) {
 }
 
 getRepoContributors(myArgs[0], myArgs[1], function(err, result) {
+  if( myArgs[0] || myArgs[1] === undefined){
+    console.log("Please enter two arguements :) thank you kindly! ")
+  } else {
   console.log("Errors:", err);
   console.log("Result:", result);
    result.forEach(function(item){
       downloadImageByURL(item.avatar_url, `avatars/${item.login}.jpg`);
     })
-
+  }
 });
 
 
